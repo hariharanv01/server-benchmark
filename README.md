@@ -18,11 +18,13 @@ This project benchmarks few popular Http servers with no/very minimal configurat
 | Go     | 0               | 46915.127            | 0.745                | 0.036                | 38.939               | 2.249                |
 | Node   | 0               | 19156.181            | 1.826                | 0.267                | 6.040                | 2.452                |
 
-**Throughput**
+##### Throughput
+
 _Higher is better_
 ![Througput](tps.svg)
 
-**Latencies**
+##### Latencies
+
 _Lower is better_
 ![Avg latency](avg-latency.svg)
 
