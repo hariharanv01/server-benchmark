@@ -1,15 +1,15 @@
-## Server benchmark
+# Server benchmark
 
 This project benchmarks few popular Http servers with no/very minimal configurations apart from the default ones.
 
-#### Servers benchmarked
+## Servers benchmarked
 
 - [Vertx](https://vertx.io/)
 - [Netty](https://netty.io/wiki/user-guide-for-4.x.html)
 - [Go](https://golang.org/doc/articles/wiki/#tmp_4)
 - [NodeJS](https://nodejs.org/api/http.html)
 
-#### Results
+## Results
 
 | Server | Failed requests | Throughput (req/sec) | Avg latency (millis) | Min latency (millis) | Max latency (millis) | 99% latency (millis) |
 | ------ | --------------- | -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |
@@ -18,21 +18,25 @@ This project benchmarks few popular Http servers with no/very minimal configurat
 | Go     | 0               | 46915.127            | 0.745                | 0.036                | 38.939               | 2.249                |
 | Node   | 0               | 19156.181            | 1.826                | 0.267                | 6.040                | 2.452                |
 
-##### Throughput
+
+#### Throughput
 
 _Higher is better_
 ![Througput](tps.svg)
 
-##### Latencies
+#### Latencies
 
 _Lower is better_
+
 ![Avg latency](avg-latency.svg)
+
 
 ![99%l3 latency](99-latency.svg)
 
-#### Test Settings
 
-**Hardware/OS MacOS** Sierra 10.12.6 2.5 GHz Intel Core i7 16 GB 2133 MHz LPDDR3
+## Test Settings
+
+**Hardware/OS** MacOS Sierra 10.12.6 2.5 GHz Intel Core i7 16 GB 2133 MHz LPDDR3
 
 **JVM** java version "1.8.0_181" Java(TM) SE Runtime Environment (build 1.8.0_181-b13) Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)
 
@@ -56,6 +60,7 @@ Output:
 /HelloWorld
 ```
 
-#### Conclusion
+## Conclusion
 
-With this setting and the input, Vertx performed the best - thanks to the combination of event loops and JVM. Go is the second best. NodeJS performed the worst in the bunch.
+With these settings and the input, Vertx performed the best - thanks to the combination of event loops and JVM. Go is the second best. NodeJS performed the worst in the bunch. Netty is in the middle of the pack. Ironically, Vertx internally uses Netty.
+The best and the worst performers both use Reactor pattern; and both have similar weakness in terms of the code that needs to be written: _callback hell_. However, this can be mitigated by using additional libraries such as vertx-rxjava2, async, etc. 
